@@ -44,8 +44,7 @@ async function run() {
     await client.connect();
     const database = client.db("gadget-hub");
     const gadgets = database.collection("gadgets");
-    console.log("Db connected");
-
+    console.log("DB Connected");
 
     app.post("/login", async (req, res) => {
       const email = req.body.email;
@@ -55,9 +54,7 @@ async function run() {
 
     app.post("/addCarsData", async (req, res) => {
       const newcar = req.body;
-      // console.log(newcar);
       const result = await gadgets.insertOne(newcar);
-      // console.log("add user :" + user);
       res.send(result);
     });
 
@@ -124,7 +121,6 @@ async function run() {
       res.send(result);
     });
   } finally {
-
   }
 }
 run().catch(console.dir);
